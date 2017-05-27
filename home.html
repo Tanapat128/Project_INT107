@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset = "UTF-8">
+	<title>Banana Music</title>
+	<link rel="icon" href="src/icon.png">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="description" content="Banana music">
+	<meta name="keywords" content="music, play, ajax, XML, JavaScript,INT107,Web tect">
+	<meta name="author" content="SIT INT107">
+	<link type="image/x-icon" href="src/iconapple.jpg">
+
+
+</head>
+<body onload = "parallax()">
+	<script>
+		
+		function parallax() {
+			//console.log("kaw");
+			var parallax = document.getElementById("main");
+			var playL = document.getElementById( 'l1' ).offsetLeft,
+				playT = document.getElementById( 'l1' ).offsetTop,
+				neL = document.getElementById( 'ne' ).offsetLeft,
+				neT = document.getElementById( 'ne' ).offsetTop,
+				eL = document.getElementById( 'e' ).offsetLeft,
+				eT = document.getElementById( 'e' ).offsetTop;
+				seL = document.getElementById( 'se' ).offsetLeft,
+				seT = document.getElementById( 'se' ).offsetTop,
+				nwL = document.getElementById( 'nw' ).offsetLeft,
+				nwT = document.getElementById( 'nw' ).offsetTop,
+				wL = document.getElementById( 'w' ).offsetLeft,
+				wT = document.getElementById( 'w' ).offsetTop,
+				swL = document.getElementById( 'sw' ).offsetLeft,
+				swT = document.getElementById( 'sw' ).offsetTop;
+			//console.log(playL + "      " + playT);
+			parallax.onmousemove = function ( event ) {
+				//console.log("onmousemove");
+				event = event || window.event;
+				var x = event.clientX - parallax.offsetLeft,
+					y = event.clientY - parallax.offsetTop;
+
+				//mouseParallax( 'playbt', playL, playT, x, y, 0 );
+				mouseParallax( 'ne', neL, neT, x, y, 2 );
+				mouseParallax( 'e', eL, eT, x, y, 10 );
+				mouseParallax( 'se', seL, seT, x, y, 5 );
+				mouseParallax( 'nw', nwL, nwT, x, y, 2 );
+				mouseParallax( 'w', wL, wT, x, y, 10 );
+				mouseParallax( 'sw', swL, swT, x, y, 5 );
+			}
+
+			function mouseParallax ( id, left, top, mouseX, mouseY, speed ){
+				
+				//console.log("mouseParallax");
+				var obj = document.getElementById(id);
+				//console.log(obj);
+				var parentObj = obj.parentNode,
+				containerWidth = parseInt( parentObj.offsetWidth ),
+				containerHeight = parseInt( parentObj.offsetHeight );
+				// containerHeight=parseInt(getHeight(obj));
+				// containerWidth=parseInt(getW(obj));
+				containerHeight=obj.clientWidth;
+				containerWidth=obj.clientHeight;
+				//console.log("conW = "+containerWidth+"\nConH = "+containerHeight);
+				obj.style.left = left - ( ( ( mouseX - ( parseInt( obj.offsetHeight ) / 2 + left ) ) / containerWidth ) * speed ) + 'px';
+				//containerHeight = 1200;
+				obj.style.top = top - ( ( ( mouseY - ( parseInt( obj.offsetHeight ) / 2 + top ) ) / containerHeight ) * speed ) + 'px';
+				// obj.style.top = left - ( ( ( mouseX - ( parseInt( obj.offsetWidth ) / 2 + left ) ) / containerWidth ) * speed ) + 'px';
+				//console.log(obj.style.left + "      " + obj.style.top);				
+			}
+
+			cover = [
+				"Bruno Mars",
+				"Twenty One Pilots",
+				"Ed Sheeran",
+				"Coldplay",
+				"Katy Perry",
+				"The Chainsmokers"];
+			cvnum = [0,1,2,3,4,5];
+			random();
+			function random(){		
+				for (var i = 0.; i <= 5 ; i++) {
+					var randomCover = Math.floor((Math.random()*5 ));
+					var temp = cover[i]
+					cover[i] = cover[randomCover];
+					cover[randomCover] = temp;
+					var temp1 = cvnum[i]
+					cvnum[i] = cvnum[randomCover];
+					cvnum[randomCover] = temp1;
+				};
+				console.log(cover);
+				console.log(cvnum);
+			}
+			showCover();
+		}
+
+	</script>
+	<main id = "main">
+		<img id = "bg" src = "src/bg5.jpg" >		
+		<div id="l1">
+			<img id = "playbt"  onclick="playBtn()" class = "midBtn" src = "src/cvPlay.png" width = "15%">
+		</div>
+		<div id="s1">
+			<div class = "cv0">
+				<img id = "se" class = "cover" width = "13%" style = "visibility: hidden">
+			</div>
+			<div id="myModal0" class="modal">
+			  <!-- Modal content -->
+				<div class="modal-content">	<span class="close">&times;</span>
+			    <p id="content0-0">TEST0</p>
+			    <p id="content0-1">TEST0</p>
+			    <p id="content0-2">TEST0</p>
+			    <p id="content0-3">TEST0</p>
+			    <p id="content0-4">TEST0</p>
+			    <span id="content0-5">TEST0</span>
+			    <span id="content0-6">TEST0</span>
+			    <span id="content0-7">TEST0</span>
+			  	</div>
+
+			</div>	
+
+			<div class = "cv1"><img id = "ne" class = "cover" width = "12%" style = "visibility: hidden"></div>
+			<div id="myModal1" class="modal">
+			  <!-- Modal content -->
+				<div class="modal-content">	<span class="close">&times;</span>
+			    <p id="content1-0">TEST1</p>
+			    <p id="content1-1">TEST0</p>
+			    <p id="content1-2">TEST0</p>
+			    <p id="content1-3">TEST0</p>
+			    <p id="content1-4">TEST0</p>
+			    <span id="content1-5">TEST0</span>
+			    <span id="content1-6">TEST0</span>
+			    <span id="content1-7">TEST0</span>
+			  	</div>
+
+			</div>		
+			
+			<div class = "cv2"><img id = "e" class = "cover" width = "18%" style = "visibility: hidden"></div>
+			<div id="myModal2" class="modal">
+			  <!-- Modal content -->
+				<div class="modal-content">	<span class="close">&times;</span>
+			    <p id="content2-0">TEST2</p>
+			    <p id="content2-1">TEST0</p>
+			    <p id="content2-2">TEST0</p>
+			    <p id="content2-3">TEST0</p>
+			    <p id="content2-4">TEST0</p>
+			    <span id="content2-5">TEST0</span>
+			    <span id="content2-6">TEST0</span>
+			    <span id="content2-7">TEST0</span>
+			  	</div>
+
+			</div>		
+			
+			<div class = "cv3"><img id = "sw" class = "cover" width = "13%" style = "visibility: hidden"></div>
+			<div id="myModal3" class="modal">
+			  <!-- Modal content -->
+				<div class="modal-content">	<span class="close">&times;</span>
+			    <p id="content3-0">TEST3</p>
+			    <p id="content3-1">TEST0</p>
+			    <p id="content3-2">TEST0</p>
+			    <p id="content3-3">TEST0</p>
+			    <p id="content3-4">TEST0</p>
+			    <span id="content3-5">TEST0</span>
+			    <span id="content3-6">TEST0</span>
+			    <span id="content3-7">TEST0</span>
+			  	</div>
+
+			</div>		
+			
+			<div class = "cv4"><img id = "nw" class = "cover" width = "12%" style = "visibility: hidden"></div>
+			<div id="myModal4" class="modal">
+			  <!-- Modal content -->
+				<div class="modal-content">	<span class="close">&times;</span>
+			    <p id="content4-0">TEST4</p>
+			    <p id="content4-1">TEST0</p>
+			    <p id="content4-2">TEST0</p>
+			    <p id="content4-3">TEST0</p>
+			    <p id="content4-4">TEST0</p>
+			    <span id="content4-5">TEST0</span>
+			    <span id="content4-6">TEST0</span>
+			    <span id="content4-7">TEST0</span>
+			  	</div>
+
+			</div>		
+			
+			<div class = "cv5"><img id = "w" class = "cover" width = "18%" style = "visibility: hidden"></div>
+			<div id="myModal5" class="modal">
+			  <!-- Modal content -->
+				<div class="modal-content">	<span class="close">&times;</span>
+			    <p id="content5-0">TEST5</p>
+			    <p id="content5-1">TEST0</p>
+			    <p id="content5-2">TEST0</p>
+			    <p id="content5-3">TEST0</p>
+			    <p id="content5-4">TEST0</p>
+			    <span id="content5-5">TEST0</span>
+			    <span id="content5-6">TEST0</span>
+			    <span id="content5-7">TEST0</span>
+			  	</div>
+
+			</div>		
+			
+		</div>
+	</main>
+	<nav class = "navbar">
+		<div class = "headbar">
+			<ul>
+				<span id = "banana"><li>banana</li></span>
+				<span id = "icon"><li id = "icon" onclick = "headside(0)"><img src="src/banana.png"></li></span>
+				<li onclick = "headside(1)" >Music</li>	
+				<li onclick = "headside(3)">About Us</li>
+				<li onclick = "headside(4)">Contact</li>
+				<li onclick = "headside(2)">Credit</li>
+			</ul>			
+		</div>
+	</nav>	
+	<script>
+		var x,xmlhttp,xmlDoc; 
+		  xmlhttp = new XMLHttpRequest(); 
+		  xmlhttp.open("GET", "src/music.xml", false); 
+		  xmlhttp.send(); 
+		  xmlDoc = xmlhttp.responseXML;  
+		  x = xmlDoc.getElementsByTagName("ARTIST");		  
+		function callAjax(i, o){
+			test(i);
+		    document.getElementById("content"+i+"-0").innerHTML = x[o].getElementsByTagName("NAME")[0].childNodes[0].nodeValue;
+		    document.getElementById("content"+i+"-1").innerHTML = x[o].getElementsByTagName("ALBUM")[0].childNodes[0].nodeValue;
+		    document.getElementById("content"+i+"-2").innerHTML = x[o].getElementsByTagName("YEAR")[0].childNodes[0].nodeValue;
+		    document.getElementById("content"+i+"-3").innerHTML = x[o].getElementsByTagName("GENRE")[0].childNodes[0].nodeValue;
+		    document.getElementById("content"+i+"-4").innerHTML = x[o].getElementsByTagName("LABELS")[0].childNodes[0].nodeValue+"<hr>";  
+		    document.getElementById("content"+i+"-5").innerHTML = "<p>"+x[o].getElementsByTagName("SOUND1N")[0].childNodes[0].nodeValue+"</p><audio controls><source src="+x[o].getElementsByTagName("SOUND1")[0].childNodes[0].nodeValue+" type='audio/mpeg'></audio>";
+		    document.getElementById("content"+i+"-6").innerHTML = "<p>"+x[o].getElementsByTagName("SOUND2N")[0].childNodes[0].nodeValue+"</p><audio controls><source src="+x[o].getElementsByTagName("SOUND2")[0].childNodes[0].nodeValue+" type='audio/mpeg'></audio>";
+		    document.getElementById("content"+i+"-7").innerHTML = "<p>"+x[o].getElementsByTagName("SOUND3N")[0].childNodes[0].nodeValue+"</p><audio controls><source src="+x[o].getElementsByTagName("SOUND3")[0].childNodes[0].nodeValue+" type='audio/mpeg'></audio>";  		    
+		}
+		function test(i){
+
+			if(i == 0){
+				var modal = document.getElementById('myModal0');
+				var btn = document.getElementById("ne");
+			}else if(i == 1){
+				var modal = document.getElementById('myModal1');
+				var btn = document.getElementById("e");
+			}else if(i == 2){
+				var modal = document.getElementById('myModal2');
+				var btn = document.getElementById("se");
+			}else if(i == 3){
+				var modal = document.getElementById('myModal3');
+				var btn = document.getElementById("sw");
+			}else if(i == 4){
+				var modal = document.getElementById('myModal4');
+				var btn = document.getElementById("w");
+			}else if(i == 5){
+				var modal = document.getElementById('myModal5');
+				var btn = document.getElementById("nw");
+			}
+			var span = document.getElementsByClassName("close")[0];
+			btn.onclick = function() {
+			    modal.style.display = "block";
+			}
+			span.onclick = function() {
+			    modal.style.display = "none";
+			}
+			window.onclick = function(event) {
+			    if (event.target == modal) {
+			        modal.style.display = "none";
+			    }
+			}
+		}
+		function showCover(){
+			document.getElementById("ne").src = "cover/" + cover[0] + ".jpg";
+			document.getElementById("e").src = "cover/" + cover[1] + ".jpg";
+			document.getElementById("se").src = "cover/" + cover[2] + ".jpg";		
+			document.getElementById("sw").src = "cover/" + cover[3] + ".jpg";
+			document.getElementById("w").src = "cover/" + cover[4] + ".jpg";
+			document.getElementById("nw").src = "cover/" + cover[5] + ".jpg";
+			timeShowCover();	
+		}
+		function timeShowCover(){
+			window.setTimeout( function(){
+				document.getElementById("ne").style.visibility = "visible";
+				document.getElementById("ne").style.animation = "showCv 2s"; 
+			} , 200 );
+				document.getElementById("ne").setAttribute("onclick", "callAjax(0, cvnum[0])");
+				document.getElementById("ne").setAttribute("onMouseOver", "showPlayBt(0)");
+			window.setTimeout( function(){
+				document.getElementById("e").style.visibility = "visible";
+				document.getElementById("e").style.animation = "showCv 2s"; 
+			} , 400 );
+				document.getElementById("e").setAttribute("onclick", "callAjax(1, cvnum[1])");
+				document.getElementById("e").setAttribute("onMouseOver", "showPlayBt(1)");
+			window.setTimeout( function(){
+				document.getElementById("se").style.visibility = "visible";
+				document.getElementById("se").style.animation = "showCv 2s"; 
+			} , 600 );
+				document.getElementById("se").setAttribute("onclick", "callAjax(2, cvnum[2])");
+				document.getElementById("se").setAttribute("onMouseOver", "showPlayBt(2)");
+			window.setTimeout( function(){
+				document.getElementById("sw").style.visibility = "visible";
+				document.getElementById("sw").style.animation = "showCv 2s"; 
+			} , 800 );
+				document.getElementById("sw").setAttribute("onclick", "callAjax(3, cvnum[3])");
+				document.getElementById("sw").setAttribute("onMouseOver", "showPlayBt(3)");
+			window.setTimeout( function(){
+				document.getElementById("w").style.visibility = "visible";
+				document.getElementById("w").style.animation = "showCv 2s"; 
+			} , 1000 );
+				document.getElementById("w").setAttribute("onclick", "callAjax(4, cvnum[4])");
+				document.getElementById("w").setAttribute("onMouseOver", "showPlayBt(4)");
+			window.setTimeout( function(){
+				document.getElementById("nw").style.visibility = "visible";
+				document.getElementById("nw").style.animation = "showCv 2s"; 
+			} , 1200 );
+				document.getElementById("nw").setAttribute("onclick", "callAjax(5, cvnum[5])");
+				document.getElementById("nw").setAttribute("onMouseOver", "showPlayBt(5)");
+		}
+		audio = new Audio("");
+		function showPlayBt(o){
+			audio.pause();
+			audio = new Audio("track/" + cover[o] + ".mp3");
+			audio.volume= .4;
+			audio.play();
+			document.getElementById("l1").innerHTML = '<img id = "stopbt"  onclick="stopBtn()" class = "midBtn" src = "src/cvStop.png" width = "15%">'						
+		}
+		function playBtn(){
+			audio.pause();
+			var rd = Math.floor(Math.random()*5);
+			audio = new Audio("track/" + cover[rd] + ".mp3");
+			audio.volume= .4;
+			audio.play();
+			document.getElementById("l1").innerHTML = '<img id = "stopbt"  onclick="stopBtn()" class = "midBtn" src = "src/cvStop.png" width = "15%">'
+		}
+		function stopBtn(){
+			audio.pause();
+			document.getElementById("l1").innerHTML = '<img id = "playbt"  onclick="playBtn()" class = "midBtn" src = "src/cvPlay.png" width = "15%">'
+			
+		}
+		function headside(i){
+			switch(i){
+				case 0:
+					document.getElementById("icon").innerHTML = '<li id = "icon"><img src="src/banana4.png"></li>';
+					window.setTimeout( function(){ change(0); } , 3000 );
+					playSound(0);
+					break;
+				case 1: 
+					alert("Welcome !");
+					break;
+				case 2: 
+					alert("Credit"+
+"Album cover\n"+
+"https://www.matichonweekly.com/art/article_18948  \n: 24k magic album cover\n"+
+"https://genius.com/The-chainsmokers-memories-do-not-open-tracklist-album-art-lyrics \n: Memories do not open album cover\n"+
+"http://www.nme.com/news/music/katy-perry-witness-album-cover-2073601 \n: Witness album cover\n"+
+"http://twenty-one-pilots.wikia.com/wiki/Blurryface \n: Blurryface album cover\n"+
+"http://www.breatheheavy.com/stream-ed-sheerans-new-album-divide/ \n: Divide album cover\n"+
+"Background image\n"+
+"https://stocksnap.io/\n"+
+"icon\n"+
+"http://www.flaticon.com/\n"+
+"cut music\n"+
+"http://mp3cut.net/th/");
+					break;
+				case 3: alert("59130500073\n59130500100\n59130500128\n59130500133\n59130500136\n59130500139");break;
+				case 4: alert("Tanapat Choochot");break;
+			}
+		}
+		function playSound(j){
+			switch(j){
+				case 0:
+					var audio = new Audio('src/bababa.mp3');
+					audio.volume= .3;
+					audio.play();
+					break;
+				case 1: 
+					var audio = new Audio('src/lalo.mp3');
+					audio.volume= .1;
+					audio.play();
+					break;
+				}
+		}
+		function change(i){
+			switch(i){
+				case 0:
+					document.getElementById("icon").innerHTML = '<li id = "icon" onMouseOver = "headside(0)"><img src="src/banana.png"></li>';
+					break;
+				case 1:
+					document.getElementById("minion").innerHTML = '<li onMouseOver = "headside(2)" >Minion!</li>';
+					break;
+			}
+		}
+	</script>
+</body>
+</html>

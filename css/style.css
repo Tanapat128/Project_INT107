@@ -1,0 +1,184 @@
+html{
+    font-family: "SF Pro Text", "SF Pro Icons", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 106.25%;
+}
+body{
+    color: white;
+    /*background-image: url("../src/bg5.jpg");*/
+}
+#bg{
+    position: absolute;
+    max-width: 100%;
+    height: auto;
+}
+.navbar{
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    display: block;
+    /*margin: 0% 20% 0% 20%;
+    width: 60%;*/
+    min-width: 100%;
+    height: 55px;
+    max-height: 100px;
+    background: rgba(0,0,0,0.8);
+    font-size: 17px;
+}
+.navbar .headbar{
+    text-align: justify;
+    margin: 0 auto;
+    max-width: 100%;
+    padding: 0 22px;
+    position: relative; 
+}
+.navbar .headbar li{ 
+    display:inline;
+}
+.navbar .headbar ul{ 
+    margin-left: 26%;
+}
+.navbar .headbar ul li{
+    list-style: none;
+    padding: 0em 3em 0em 3em;
+    margin: -0.3em 0em 2em 0em;
+}
+#icon{
+    position: fixed;
+    margin-left: -4%;
+}
+#banana{
+    /*color: rgba(0,0,0,0.8);*/
+    visibility: hidden;
+}
+.midBtn{
+    /*margin: 10% 37.5% 10% 37.5%;
+    margin: -10px -10px;*/
+    position: absolute;
+}
+.cover{
+    position: absolute;
+    border-radius:10px;
+    border: 1px solid grey;
+    padding: 5px;
+    display: block;
+}
+.cover:hover{
+    box-shadow: 0 0 10px 3px orange;
+}
+#bg{
+    opacity: 0.4;
+}
+#playbt{
+    top: 30%;
+    left: 42.5%;
+}
+#stopbt{
+    top: 30%;
+    left: 42.5%;
+}
+#cv0{
+    position: relative;
+}
+#position{
+    transition: .5s ease;
+    opacity: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%)
+}
+#information{
+    position: absolute;
+    padding: 2px 2px;
+}
+#iBt{
+    position: absolute;
+}
+#ne{
+    top: 15%;
+    left: 70%;
+}#ne:hover{ 
+    opacity:0.6;
+}
+
+#e{
+    top: 40%;
+    left: 75%;
+}
+#e:hover{ 
+    opacity:0.6;
+}
+#se{
+    top: 71%;
+    left: 58%;
+}
+#se:hover{ 
+    opacity:0.6;
+}
+#nw{
+    top: 12%;
+    left: 18%;
+}
+#nw:hover{ 
+    opacity:0.6;
+}
+#w{
+    top: 40%;
+    left: 8%;
+}
+#w:hover{ 
+    opacity:0.6;
+}
+#sw{
+    top: 71%;
+    left: 32%;
+}
+#sw:hover{ 
+    opacity:0.6;
+}
+@keyframes showCv {
+    from { opacity: 0;}
+    to { opacity: 1;}
+}
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+    color: black;
+    top: 50%;
+    left: 50%;
+}
+
+/* The Close Button */
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
